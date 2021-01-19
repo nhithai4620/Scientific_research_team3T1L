@@ -1,9 +1,9 @@
 ## The system extracts information from personal card
-Creating by a team of student at CTU. 
-Text detection is based CTPN and text recognition is based crnn and ctc belong to vietocr systems.  
-This is a scientific research project about the topic of optical character recognition. 
+- Creating by a team of student at CTU. 
+- Text detection is based CTPN and text recognition is based crnn and ctc belong to vietocr systems.  
+- This is a scientific research project about the topic of optical character recognition. 
 
-## requirement
+## Requirement
 - python-3.5+
 - pytorch-0.4.1+
 - torchvision-0.2.1
