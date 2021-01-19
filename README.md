@@ -27,7 +27,3 @@ After downloading, add 2 models to the checkpoints directory for implementation
  - Trương Hoàng Thuận
  - Bùi Quốc Trọng
  - Võ Thành Long
-
-
-
-
