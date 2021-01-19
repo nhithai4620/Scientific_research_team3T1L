@@ -1,45 +1,33 @@
-## ocr.pytorch
-> A pure pytorch implemented ocr project.    
-Text detection is based CTPN and text recognition is based CRNN.  
-More detection and recognition methods will be supported!
+## The system extracts information from personal card
+creating by a team of student at CTU 
+Text detection is based CTPN and text recognition is based crnn and ctc belong to vietocr systems.  
+This is a scientific research project about the topic of optical character recognition 
 
-## Prerequisite
-
+## requirement
 - python-3.5+
 - pytorch-0.4.1+
 - torchvision-0.2.1
 - opencv-3.4.0.14
 - numpy-1.14.3
 
+## Download model 
+https://drive.google.com/drive/folders/1qCuRMkrO7jE1UK5n_nyrtFg0I1slWm5X?usp=sharing
 
-They could all be installed through pip except pytorch and torchvision. As for pytorch and torchvision, 
-they both depends on your CUDA version, you would prefer to reading [pytorch's official site](https://pytorch.org/)
+After downloading, add 2 models to the checkpoints directory for implementation
+
+## Using
+
+1. Downloading the project to your pc
+2. Add 2 model above to checkpoint folder
+3. Run command 
+            python main.py path/image
+            
+ ## Creator
+ - Nguyễn Nhĩ Thái    email: nguyennhithai4620@gmail.com
+ - Trương Hoàng Thuận
+ - Bùi Quốc Trọng
+ - Võ Thành Long
 
 
-### Detection
-Detection is based on [CTPN](https://arxiv.org/abs/1609.03605), some codes are borrowed from 
-[pytorch_ctpn](https://github.com/opconty/pytorch_ctpn), several detection results: 
-![detect1](test_result/t1.jpg)
-![detect2](test_result/t2.jpg)
-### Recognition
-Recognition is based on [CRNN](http://arxiv.org/abs/1507.05717), some codes are borrowed from
-[crnn.pytorch](https://github.com/meijieru/crnn.pytorch)
 
-### Test
-Download pretrained models from [Baidu Netdisk](https://pan.baidu.com/s/1yllO9hBF8TgChHJ7i3WobA) (extract code: u2ff) or [Google Driver](https://drive.google.com/open?id=1hRr9v9ky4VGygToFjLD9Cd-9xan43qID)
-and put these files into checkpoints.
-Then run
->python3 demo.py
 
-The image files in ./test_images will be tested for text detection and recognition, the results will be stored in ./test_result.
-
-If you want to test a single image, run
->python3 test_one.py [filename]
-
-### Train
-Training codes are placed into train_code directory.  
-Train [CTPN](./train_code/train_ctpn/readme.md)  
-Train [CRNN](./train_code/train_crnn/readme.md)  
-
-### Licence
-[MIT License](https://opensource.org/licenses/MIT)
