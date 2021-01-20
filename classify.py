@@ -1,13 +1,13 @@
+from idCard_class import *
+from drivingLicense_class import *
 
-from CCCD_class import CCCD
-
-def classify(results):
-    for item in results:
-        if 'CĂN CƯỚC CÔNG DÂN' in item:
-            return classify_cccd(results)
+# def classify(results):
+#     for item in results:
+#         if 'CĂN CƯỚC CÔNG DÂN' in item:
+#             return classify_cccd(results)
 
 
-def classify_cccd(results):
+def classify_idCard(results):
     id = ''
     name = ''
     birth = ''
@@ -36,5 +36,30 @@ def classify_cccd(results):
             if 'Có giá trị đến' not in results[i+1]:
                 address += " "+results[i+1]
     
-    cccd = CCCD(id,name,birth,nationality,sex,hometown,address)
-    return cccd
+    idCard = IDCARD(id,name,birth,nationality,sex,hometown,address)
+    return idCard
+
+def classify_drivingLicense(results):
+    idOfDL = ''
+    nameOfDL = ''
+    birthOfDL = ''
+    nationalityOfDL = ''
+    addressOfDL = ''
+    classOfDL = ''
+
+    for i in range (len(results)):
+        if results[i].isdigit():
+            idOfDL = results[i]
+        if 'Họ tên' in results[i]:
+            nameOfDL = results[i+1] 
+        if 'Ngày sinh' in results[i]:
+            birthOfDL = results[i+1]
+        if 'Quốc tịch' in results[i]:
+            nationalityOfDL = results[i+1]
+        if 'Nơi cư trù' in results[i] or 'Nơi cư trú' in results[i]:
+            addressOfDL = results[i+1]
+        if 'Hạng' in results[i]:
+            classOfDL = results[i][11:]
+    
+    drivingLicense = DrivingLicense(idOfDL,nameOfDL,birthOfDL,nationalityOfDL,addressOfDL, classOfDL)
+    return drivingLicense

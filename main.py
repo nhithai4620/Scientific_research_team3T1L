@@ -2,8 +2,9 @@ import cv2
 import numpy as np
 from processing import proc_img
 from PIL import Image
-from CCCD_class import CCCD
-from classify import  classify
+from idCard_class import *
+from drivingLicense_class import *
+from classify import  *
 
 
 def single_pic_proc(image_file):
@@ -35,12 +36,23 @@ def output_proc(results):#xử lí kết quả đầu ra
     sex = ' '
     hometown = ' '
     address = ' '
-    cccd = CCCD(id,name,birth,nationality,sex,hometown,address)
-    cccd = classify(results) #phân loại
-    cccd.print_cccd()
+    classOfDL = ' '
+    checkIdCard = False
+    checkDrivingLicense = False
+    for item in results:
+        if 'CĂN CƯỚC CÔNG DÂN' in item or 'CĂN CƯỚC' in item:
+            checkIdCard = True
+        if 'GIẤY PHÉP LÁI XE' in item or 'GIẤY' in item:
+            checkDrivingLicense = True
+    if checkDrivingLicense == True and checkIdCard == False:
+        card = DrivingLicense(id,name,birth,nationality,address, classOfDL)
+        card = classify_drivingLicense(results) #phân loại
+        card.print_DrivingLicense()
+    elif checkDrivingLicense == False and checkIdCard == True:
+        card = IDCARD(id,name,birth,nationality,sex,hometown,address)
+        card = classify_idCard(results)
+        card.print_idCard()
     
-
-
 
 if __name__ == '__main__':
     import sys
@@ -48,9 +60,10 @@ if __name__ == '__main__':
         filename = sys.argv[1]
         if filename.endswith('jpg') or filename.endswith('png'): #nhận đầu vào là đuôi jpg hoặc png
             results, image_framed = single_pic_proc(filename) #Hàm trả về là kết quả dạng array và img đã đóng khung
-            show_img(image_framed) #hiển thị ảnh
             #print(results) #hiển thị kết quả
             output_proc(results)
+            show_img(image_framed) #hiển thị ảnh
+
 
 
 
