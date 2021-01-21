@@ -4,6 +4,7 @@ from processing import proc_img
 from PIL import Image
 from idCard_class import *
 from drivingLicense_class import *
+from studentCard import *
 from classify import  *
 
 
@@ -37,22 +38,25 @@ def output_proc(results):#xử lí kết quả đầu ra
     hometown = ' '
     address = ' '
     classOfDL = ' '
-    checkIdCard = False
-    checkDrivingLicense = False
-    for item in results:
-        if 'CĂN CƯỚC CÔNG DÂN' in item or 'CĂN CƯỚC' in item:
-            checkIdCard = True
-        if 'GIẤY PHÉP LÁI XE' in item or 'GIẤY' in item:
-            checkDrivingLicense = True
-    if checkDrivingLicense == True and checkIdCard == False:
-        card = DrivingLicense(id,name,birth,nationality,address, classOfDL)
-        card = classify_drivingLicense(results) #phân loại
-        card.print_DrivingLicense()
-    elif checkDrivingLicense == False and checkIdCard == True:
-        card = IDCARD(id,name,birth,nationality,sex,hometown,address)
-        card = classify_idCard(results)
+    major = ' '
+    faculty = ' '
+    course = ' '
+    if classify(results) == 1:
+        card = IdCard(id,name,birth,nationality,sex,hometown,address)
+        card = output_proc_idCard(results)
         card.print_idCard()
+    if classify(results) == 2:
+        card = DrivingLicense(id,name,birth,nationality,address, classOfDL)
+        card = output_proc_drivingLicense(results) #phân loại
+        card.print_DrivingLicense()
+    if classify(results) == 3:
+        card = StudentCard(name, id, major, faculty, course)
+        card = output_proc_studentCard(results)
+        card.print_StudentCard()
+        
     
+
+
 
 if __name__ == '__main__':
     import sys
@@ -60,7 +64,7 @@ if __name__ == '__main__':
         filename = sys.argv[1]
         if filename.endswith('jpg') or filename.endswith('png'): #nhận đầu vào là đuôi jpg hoặc png
             results, image_framed = single_pic_proc(filename) #Hàm trả về là kết quả dạng array và img đã đóng khung
-            #print(results) #hiển thị kết quả
+            print(results) #hiển thị kết quả
             output_proc(results)
             show_img(image_framed) #hiển thị ảnh
 

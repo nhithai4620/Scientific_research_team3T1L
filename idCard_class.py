@@ -1,4 +1,4 @@
-class IDCARD:
+class IdCard:
     def __init__(self,id, name, birth, nationality, sex, hometown, address):
         self.id = id
         self.name = name
