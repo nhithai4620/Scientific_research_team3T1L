@@ -1,4 +1,4 @@
-class CCCD:
+class IdCard:
     def __init__(self,id, name, birth, nationality, sex, hometown, address):
         self.id = id
         self.name = name
@@ -8,7 +8,7 @@ class CCCD:
         self.hometown = hometown
         self.address = address
 
-    def print_cccd(self):
+    def print_idCard(self):
         print('Số CMND: ' + self.id)
         print('Họ tên: '+ self.name)
         print('Ngày sinh: '+ self.birth)
