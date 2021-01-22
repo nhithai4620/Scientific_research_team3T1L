@@ -4,6 +4,7 @@ from processing import proc_img
 from PIL import Image
 from idCard_class import *
 from drivingLicense_class import *
+from studentCard_class import *
 from classify import  *
 
 
@@ -37,6 +38,9 @@ def output_proc(results):#xử lí kết quả đầu ra
     hometown = ' '
     address = ' '
     classOfDL = ' '
+    major = ' '
+    faculty = ' '
+    course = ' '
     if classify(results) == 2:
         card = DrivingLicense(id,name,birth,nationality,address, classOfDL)
         card = output_proc_drivingLicense(results) #phân loại
@@ -45,7 +49,10 @@ def output_proc(results):#xử lí kết quả đầu ra
         card = IdCard(id,name,birth,nationality,sex,hometown,address)
         card = output_proc_idCard(results)
         card.print_idCard()
-    
+    if classify(results) == 3:
+        card = StudentCard(name, id, major, faculty, course)
+        card = output_proc_studentCard(results)
+        card.print_StudentCard()
 
 
 
