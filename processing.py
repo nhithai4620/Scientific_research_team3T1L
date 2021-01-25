@@ -13,6 +13,8 @@ def show_image(image):
 
 def sort_box(box):
     box = sorted(box, key=lambda x: sum([x[1], x[3], x[5], x[7]]))
+    # box = sorted(box, cv2.con)
+
     return box
 #hàm sắp xếp các trường
 
@@ -69,6 +71,7 @@ def char_rec(img, text_recs, adjust=False):
             continue
         
         list_img.append(part_img)
+        
 
     results = img_to_text(list_img)
 

@@ -1,4 +1,3 @@
-
 from studentCard_class import *
 from idCard_class import *
 from drivingLicense_class import *
@@ -7,7 +6,7 @@ def classify(results):
     for item in results:
         if 'CĂN CƯỚC CÔNG DÂN' in item or 'CĂN CƯỚC' in item:
             return 1
-        if 'GIẤY PHÉP LÁI XE' in item or 'GIẤY' in item or 'GIÂY PHÉP LÁI XE' in item:
+        if 'GIẤY PHÉP LÁI XE' in item or 'GIẤY' in item or 'GIÂY PHÉP LÁI XE' in item or 'DRIVER' in item:
             return 2
         if 'TRƯỜNG ĐẠI HỌC' in item or 'TRƯỜNG ĐAI HOC' in item or 'TRƯỜNG ĐAI' in item or 'UNIVERSITY' in item:
             return 3
@@ -72,7 +71,15 @@ def output_proc_drivingLicense(results):
         if 'Quốc tịch' in results[i]:
             nationalityOfDL = results[i-1]
         if 'Nơi cư trù' in results[i] or 'Nơi cư trú' in results[i] or 'Address' in results[i]:
-            addressOfDL = results[i+1]
+            # addressOfDL = results[i+1]
+            if  'NAM' not in results[i-1] or 'Quốc tịch/Nationality:' not in results[i-1]:
+                addressOfDL = results[i-1] + ', ' + results[i+1]
+            if 'Quốc tịch/Nationality:' in results[i-1]:
+                addressOfDL = results[i+1]
+            if 'korea' in results[i-1]:
+                addressOfDL = results[i+1]
+            if 'year' not in results[i+2]:
+                addressOfDL += ', ' + results[i+2]
         if 'Hạng' in results[i]:
             classOfDL = results[i][11:]
     
@@ -100,3 +107,4 @@ def output_proc_studentCard(results):
 
     studentCard = StudentCard(name, id, major, faculty, course)
     return studentCard
+

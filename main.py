@@ -41,18 +41,20 @@ def output_proc(results):#xử lí kết quả đầu ra
     major = ' '
     faculty = ' '
     course = ' '
-    if classify(results) == 2:
-        card = DrivingLicense(id,name,birth,nationality,address, classOfDL)
-        card = output_proc_drivingLicense(results) #phân loại
-        card.print_DrivingLicense()
     if classify(results) == 1:
         card = IdCard(id,name,birth,nationality,sex,hometown,address)
         card = output_proc_idCard(results)
         card.print_idCard()
+    if classify(results) == 2:
+        card = DrivingLicense(id,name,birth,nationality,address, classOfDL)
+        card = output_proc_drivingLicense(results) #phân loại
+        card.print_DrivingLicense()
     if classify(results) == 3:
         card = StudentCard(name, id, major, faculty, course)
         card = output_proc_studentCard(results)
         card.print_StudentCard()
+        
+    
 
 
 
@@ -62,9 +64,10 @@ if __name__ == '__main__':
         filename = sys.argv[1]
         if filename.endswith('jpg') or filename.endswith('png'): #nhận đầu vào là đuôi jpg hoặc png
             results, image_framed = single_pic_proc(filename) #Hàm trả về là kết quả dạng array và img đã đóng khung
-            show_img(image_framed) #hiển thị ảnh
             print(results) #hiển thị kết quả
             output_proc(results)
+            show_img(image_framed) #hiển thị ảnh
+
 
 
 

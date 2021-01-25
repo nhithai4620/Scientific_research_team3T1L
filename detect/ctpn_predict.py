@@ -87,6 +87,7 @@ def get_det_boxes(image,display = True, expand = True):
                 blank = cv2.rectangle(blank, pt1, pt2, (50, 0, 0), -1)
             image_c = image_c+blank
             image_c[image_c>255] = 255
+            
             for i in text:
                 s = str(round(i[-1] * 100, 2)) + '%'
                 i = [int(j) for j in i]
@@ -94,13 +95,14 @@ def get_det_boxes(image,display = True, expand = True):
                 cv2.line(image_c, (i[0], i[1]), (i[4], i[5]), (0, 0, 255), 1)
                 cv2.line(image_c, (i[6], i[7]), (i[2], i[3]), (0, 0, 255), 1)
                 cv2.line(image_c, (i[4], i[5]+2), (i[6], i[7]+2), (0, 0, 255), 1)
-
-                # cv2.putText(image_c, s, (i[0]+13, i[1]+13),
+                
+                # cv2.putText(image_c, str(k), (i[0]+13, i[1]+13),
                 #             cv2.FONT_HERSHEY_SIMPLEX,
                 #             1,
                 #             (255,0,0),
                 #             2,
                 #             cv2.LINE_AA)
+                
             
         return text,image_c,image_r
 

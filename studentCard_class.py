@@ -13,3 +13,5 @@ class StudentCard:
         print('Ngành: ' + self.major)
         print('Khoa: ' + self.faculty)
         print('Khóa học: ' + self.course)
+
+        
