@@ -11,7 +11,7 @@
             ``` tutorial-env\Scripts\activate.bat ```
 3. Download requirement in Virtual Environments:
             ``` pip install -r requirement.txt ```
-> If you have problems with step 2 because of requiring admin access, open powershell, run as admin and run this comman:
+> If you have problems with step 2 because of requiring admin access, open powershell, run as admin and run this comman.
 > ```Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigne```
 
 ## Download model 
