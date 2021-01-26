@@ -4,8 +4,8 @@
 - This is a scientific research project about the topic of optical character recognition 
 
 ## Download requirement
-# To download requirement, firstly you should create Virtual Environments
-1. Download venv.
+#### To download requirement, firstly you should create Virtual Environments
+1. Download venv:
             ```python3 -m venv tutorial-env ```
 2. Activate venv.
             ``` tutorial-env\Scripts\activate.bat ```
