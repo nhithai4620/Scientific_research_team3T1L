@@ -24,7 +24,7 @@
 ## Download model 
    https://drive.google.com/drive/folders/1qCuRMkrO7jE1UK5n_nyrtFg0I1slWm5X?usp=sharing
 
-    After downloading, add 2 models to the checkpoints directory for implementation
+   After downloading, add 2 models to the checkpoints directory for implementation
 
 ## Using
 
