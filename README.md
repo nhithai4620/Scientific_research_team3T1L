@@ -6,11 +6,11 @@
 ## Download requirement
 - To download requirement, firstly you should create Virtual Environments
 1. Download venv 
-           @ python3 -m venv tutorial-env
+            python3 -m venv tutorial-env
 2. Activate venv
-            @ tutorial-env\Scripts\activate.bat
+             tutorial-env\Scripts\activate.bat
 3. Download requirement in Virtual Environments
-            @ pip install -r requirement.txt
+             pip install -r requirement.txt
 
 
 ## Download model 
