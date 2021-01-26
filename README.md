@@ -3,12 +3,15 @@
 - Text detection is based CTPN and text recognition is based crnn and ctc belong to vietocr systems.  
 - This is a scientific research project about the topic of optical character recognition 
 
-## Requirement
-- python-3.5+
-- pytorch-0.4.1+
-- torchvision-0.2.1
-- opencv-3.4.0.14
-- numpy-1.14.3
+## Download requirement
+- To download requirement, firstly you should create Virtual Environments
+1. Download venv 
+           @ python3 -m venv tutorial-env
+2. Activate venv
+            @ tutorial-env\Scripts\activate.bat
+3. Download requirement in Virtual Environments
+            @ pip install -r requirement.txt
+
 
 ## Download model 
 https://drive.google.com/drive/folders/1qCuRMkrO7jE1UK5n_nyrtFg0I1slWm5X?usp=sharing
