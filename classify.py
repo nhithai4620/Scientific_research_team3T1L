@@ -24,10 +24,10 @@ def output_proc_idCard(results):
     for i in range (len(results)):
         if results[i].isdigit():
             id = results[i]
-            if results[i+1] == 'Họ và tên:' or results[i+1] == 'HỌ VÀ TÊN' or results[i+1] == 'Ho và tên':
+            if results[i+1] == 'Họ và tên:' or results[i+1] == 'HỌ VÀ TÊN' or results[i+1] == 'Ho và tên' or results[i+1] == 'Họ và tên':
                 name = results[i+2]
             else:
-                if 'Họ và tên:' in results[i+1] or 'HỌ VÀ TÊN' in results[i+1] or 'Ho và tên' in results[i+1]:
+                if 'Họ và tên:' in results[i+1] or 'HỌ VÀ TÊN' in results[i+1] or 'Ho và tên' in results[i+1] or 'Họ và tên' in results[i+1]:
                     name = results[i+1][11:]
                 else:
                     name = results[i+1]
@@ -35,7 +35,7 @@ def output_proc_idCard(results):
             birth = results[i][22:]
         if 'Quốc tịch' in results[i] or 'Quốc tích' in results[i]:
             nationality = results[i][11:]
-        if 'Giới tính' in results[i] or 'GIỚI TÍNH' in results[i] or 'Giới tinh' in results[i]:
+        if 'Giới tính' in results[i] or 'GIỚI TÍNH' in results[i] or 'Giới tinh' in results[i] or 'Giới' in results[i]:
             sex = results[i][10:]
         if 'Quê quán' in results[i] or 'Quê quân' in results[i]:
             hometown = results[i][10:]
@@ -60,25 +60,36 @@ def output_proc_drivingLicense(results):
     for i in range (len(results)):
         if results[i].isdigit():
             idOfDL = results[i]
-        elif 'Số/No' in results[i] or 'Số' in results[i]:
+        elif 'Số/No' in results[i] or 'Số' in results[i] or 'Sô/No' in results[i]:
             idOfDL = results[i][7:]
         if results[i] == 'Họ tên/Full name:' or results[i] == 'Ho tên/Full name' or results[i] == 'Họ tên/Full name':
-            nameOfDL = results[i-1] 
+            if '/' in results[i+1]:
+                nameOfDL = results[i-1]
+            else:
+                nameOfDL = results[i+1] 
         elif 'Họ tên' in results[i]:
             nameOfDL = results[i][18:]
         if 'Ngày sinh' in results[i] or 'Birth' in results[i]:
-            birthOfDL = results[i-1]
+            if '/' in results[i-1]:
+                birthOfDL = results[i-1]
+            else:
+                birthOfDL = results[i+1]
         if 'Quốc tịch' in results[i]:
-            nationalityOfDL = results[i-1]
+            if 'NAM' in results[i-1] or 'Address' in results[i+1]:
+                nationalityOfDL = results[i-1]
+            else:
+                nationalityOfDL = results[i+1]
         if 'Nơi cư trù' in results[i] or 'Nơi cư trú' in results[i] or 'Address' in results[i]:
             # addressOfDL = results[i+1]
-            if  'NAM' not in results[i-1] or 'Quốc tịch/Nationality:' not in results[i-1]:
-                addressOfDL = results[i-1] + ', ' + results[i+1]
-            if 'Quốc tịch/Nationality:' in results[i-1]:
+            if 'Quốc tịch/Nationality:' in results[i-1] or 'NAM' in results[i-1]:
                 addressOfDL = results[i+1]
+            else:
+                addressOfDL = results[i-1] + ', ' + results[i+1]
             if 'korea' in results[i-1]:
                 addressOfDL = results[i+1]
-            if 'year' not in results[i+2]:
+            if 'year' in results[i+2] or 'date' in results[i+2]:
+                continue
+            else:
                 addressOfDL += ', ' + results[i+2]
         if 'Hạng' in results[i]:
             classOfDL = results[i][11:]
