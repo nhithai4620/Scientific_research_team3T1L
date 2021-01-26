@@ -4,7 +4,7 @@
 - This is a scientific research project about the topic of optical character recognition 
 
 ## Download requirement
-* To download requirement, firstly you should create Virtual Environments
+- To download requirement, firstly you should create Virtual Environments
 1. Download venv:
             ```python3 -m venv tutorial-env ```
 2. Activate venv:
@@ -16,7 +16,7 @@
 ## Download model 
    https://drive.google.com/drive/folders/1qCuRMkrO7jE1UK5n_nyrtFg0I1slWm5X?usp=sharing
 
-   After downloading, add 2 models to the checkpoints directory for implementation
+   > After downloading, add 2 models to the checkpoints directory for implementation
 
 ## Using
 
