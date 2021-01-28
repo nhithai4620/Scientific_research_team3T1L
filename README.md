@@ -16,10 +16,9 @@
             ``` 
             pip install -r requirement.txt
             ```
-> If you have problems with step 2 because of requiring admin access, open powershell, run as administractor and run this comman. It work for me!
+
 > If you have problems with step 2 because of requiring admin access, open powershell, run as admin and run this comman. It work for me!
->     Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigne
-            
+>     Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigne         
 ## Download model 
    https://drive.google.com/drive/folders/1qCuRMkrO7jE1UK5n_nyrtFg0I1slWm5X?usp=sharing
    After downloading, add 2 models to the checkpoints directory for implementation
