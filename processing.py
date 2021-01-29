@@ -19,7 +19,8 @@ def sort_box(box):
 #hàm sắp xếp các trường
 
 
-def rotate_image(img, degree, pt1, pt2, pt3, pt4): 
+def rotate_image(img, degree, pt1, pt2, pt3, pt4):
+     
     height, width = img.shape[:2]
     heightNew = int(width * fabs(sin(radians(degree))) + height * fabs(cos(radians(degree))))
     widthNew = int(height * fabs(sin(radians(degree))) + width * fabs(cos(radians(degree))))
@@ -28,7 +29,7 @@ def rotate_image(img, degree, pt1, pt2, pt3, pt4):
     matRotation[0, 2] += (widthNew - width) // 2
     matRotation[1, 2] += (heightNew - height) // 2
 
-    imgRotation = cv2.warpAffine(np.float32(img), matRotation, (widthNew, heightNew), borderValue=(255, 255, 255))
+    imgRotation = cv2.warpAffine(img, matRotation, (widthNew, heightNew), borderValue=(255, 255, 255))
 
     pt1 = list(pt1)
     pt3 = list(pt3)
@@ -40,12 +41,14 @@ def rotate_image(img, degree, pt1, pt2, pt3, pt4):
 
     imgOut = imgRotation[max(1, int(pt1[1])): min(ydim - 1, int(pt3[1])),
              max(1, int(pt1[0])): min(xdim - 1, int(pt3[0]))]
-
+    
     return imgOut
+    
 #Hàm xoay ảnh
 
 
 def char_rec(img, text_recs, adjust=False):
+    
     results = []
     list_img = []
     xDim, yDim = img.shape[1], img.shape[0]
@@ -72,8 +75,10 @@ def char_rec(img, text_recs, adjust=False):
         
         list_img.append(part_img)
         
+        
 
     results = img_to_text(list_img)
+    
 
     return results
 #Hàm nhận dạng kí tự

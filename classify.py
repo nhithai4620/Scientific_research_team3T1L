@@ -60,19 +60,42 @@ def output_proc_drivingLicense(results):
     for i in range (len(results)):
         if results[i].isdigit():
             idOfDL = results[i]
-        elif 'Số/No' in results[i] or 'Số' in results[i] or 'Sô/No' in results[i]:
+        elif 'Số/No' in results[i] or  'Sô/No' in results[i] :
             idOfDL = results[i][7:]
-        if results[i] == 'Họ tên/Full name:' or results[i] == 'Ho tên/Full name' or results[i] == 'Họ tên/Full name':
-            if '/' in results[i+1]:
-                nameOfDL = results[i-1]
+            if results[i+1] == 'Họ tên/Full name:' or results[i+1] == 'Ho tên/Full name' or results[i+1] == 'Họ tên/Full name':
+                # if '/' in results[i+2]:
+                #     nameOfDL = results[i]
+                # else:
+                #     nameOfDL = results[i+1]
+                if '/' in results[i+2]:
+                    continue
+                else:
+                    nameOfDL = results[i+2]
+            elif 'Họ tên' in results[i+1]:
+                nameOfDL = results[i+2][18:]
             else:
-                nameOfDL = results[i+1] 
-        elif 'Họ tên' in results[i]:
-            nameOfDL = results[i][18:]
+                nameOfDL = results[i+1]
+        elif 'Số' in results[i] or 'No' in results[i]:
+            idOfDL = results[i][4:]
+            if results[i+1] == 'Họ tên/Full name:' or results[i+1] == 'Ho tên/Full name' or results[i+1] == 'Họ tên/Full name':
+                # if '/' in results[i+2]:
+                #     nameOfDL = results[i]
+                # else:
+                #     nameOfDL = results[i+1]
+                if '/' in results[i+2]:
+                    continue
+                else:
+                    nameOfDL = results[i+2]
+            elif 'Họ tên' in results[i+1]:
+                nameOfDL = results[i+2][18:]
+            else:
+                nameOfDL = results[i+1]
         if 'Ngày sinh' in results[i] or 'Birth' in results[i]:
             if '/' in results[i-1]:
                 birthOfDL = results[i-1]
             else:
+                birthOfDL = results[i+1]
+            if 'Full name' in results[i-1]:
                 birthOfDL = results[i+1]
         if 'Quốc tịch' in results[i]:
             if 'NAM' in results[i-1] or 'Address' in results[i+1]:

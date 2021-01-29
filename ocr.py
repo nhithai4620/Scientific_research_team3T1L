@@ -2,6 +2,7 @@ import numpy as np
 from vietocr.tool.predictor import Predictor
 from vietocr.tool.config import Cfg
 from PIL import Image
+import cv2
 
 
 def img_to_text(list_img):
