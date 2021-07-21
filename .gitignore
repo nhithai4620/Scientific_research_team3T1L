@@ -1,3 +1,4 @@
-/env
-/.vscode
-/checkpoints
+venv/
+.idea/
+*.pth
+media/

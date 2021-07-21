@@ -1,39 +1,27 @@
-## The system extracts information from personal card
-- Creating by a team of student at CTU 
-- Text detection is based CTPN and text recognition is based crnn and ctc belong to vietocr systems.  
-- This is a scientific research project about the topic of optical character recognition 
-## Download requirement
- To download requirement, firstly you should create Virtual Environments
-1. Download venv:
-            ```
-            python3 -m venv tutorial-env 
-            ```
-2. Activate venv:
-            ``` 
-            tutorial-env\Scripts\activate.bat
-            ```
-3. Download requirement in Virtual Environments:
-            ``` 
-            pip install -r requirement.txt
-            ```
+# Django Vietnamese ID card OCR
+## Installation
+Creation of virtual environments is done by executing the command venv:
+```bash
+python -m venv venv
+```
 
-> If you have problems with step 2 because of requiring admin access, open powershell, run as admin and run this comman. It work for me!
->     Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigne         
-## Download model 
-   https://drive.google.com/drive/folders/1qCuRMkrO7jE1UK5n_nyrtFg0I1slWm5X?usp=sharing
-   After downloading, add 2 models to the checkpoints directory for implementation
-## Using
-  1. Downloading the project to your pc.
-  2. Add 2 model above to checkpoint folder.
-  3. Downloading requirement.
-  3. Run command.
-            ```python main.py path/image```
-            
- ## Creator
- - Nguyễn Nhĩ Thái                 >  email: nguyennhithai4620@gmail.com
- - Trương Hoàng Thuận
- - Bùi Quốc Trọng
- - Võ Thành Long
+That will create a new folder env in your project directory. Next activate it with this command on mac/linux:
+```bash
+source venv/bin/active
+```
 
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install requirements:
+```bash
+pip install -r requirements.txt
+```
 
+Go to this [link](https://1drv.ms/u/s!Avsw2PR5gprjicdb8kstRQchzCnsiw?e=RH2KDb) to download data file for PyTorch and paste it to this following directory:
+```directory
+.../django-ocr-app/ocr/checkpoints
+```
 
+## Usage
+Run the project with this command. Then open http://localhost:8000 in your borwser to see the website.
+```bash
+python manage.py runserver
+```
