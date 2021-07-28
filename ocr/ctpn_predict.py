@@ -12,12 +12,12 @@ from ocr.config import IMAGE_MEAN
 
 prob_thresh = 0.5
 height = 720
-# gpu = True
-# if not torch.cuda.is_available():
-#     gpu = False
-device = torch.device('cpu')
+gpu = True
+if not torch.cuda.is_available():
+    gpu = False
+device = torch.device('cuda:0' if gpu else 'cpu')
 # weights = os.path.join(config.checkpoints_dir, 'CTPN.pth')
-weights = os.path.join('ocr/checkpoints/CTPN.pth')
+weights = os.path.join('ocr/CTPN.pth')
 
 model = CTPN_Model()
 model.load_state_dict(torch.load(weights, map_location=device)['model_state_dict'])

@@ -35,7 +35,7 @@ def rotate_image(img, degree, pt1, pt2, pt3, pt4):
     pt3 = list(pt3)
 
     [[pt1[0]], [pt1[1]]] = np.dot(matRotation, np.array([[pt1[0]], [pt1[1]], [1]]))
-    [[pt3[0]], [pt3[1]]] = np.dot(matRotation, np.array([[pt3[0]], [pt3[1]], [1]])) 
+    [[pt3[0]], [pt3[1]]] = np.dot(matRotation, np.array([[pt3[0]], [pt3[1]], [1]]))
 
     ydim, xdim = imgRotation.shape[:2]
 

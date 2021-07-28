@@ -46,15 +46,17 @@ def output_proc(results):  # xử lí kết quả đầu ra
     course = ' '
     expires = ' '
     result = ''
-    
+
     if classify(results) == 1:
         card = IdCard(id, name, birth, nationality, sex, hometown, address, expires)
         card = output_proc_idCard(results)
         result = card.print_idCard()
+
     if classify(results) == 2:
         card = DrivingLicense(id, name, birth, nationality, address, classOfDL, expires)
         card = output_proc_drivingLicense(results)  # phân loại
         result = card.print_DrivingLicense()
+
     if classify(results) == 3:
         card = StudentCard(name, id, major, faculty, course)
         card = output_proc_studentCard(results)
@@ -63,7 +65,7 @@ def output_proc(results):  # xử lí kết quả đầu ra
 
 
 def extract(img):
-    results, image_framed = single_pic_proc(img) #Hàm trả về là kết quả dạng array và img đã đóng khung
+    results, image_framed = single_pic_proc(img)  # Hàm trả về là kết quả dạng array và img đã đóng khung
     res = output_proc(results)
     return res
 

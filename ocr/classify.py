@@ -35,7 +35,7 @@ def searchLastName(data):
     lastName = uni.unidecode(name[0].upper())
     maxx = 0
     if lastName not in listAccent:
-        with open(r'D:\Github\Django-Extract-Card\ocr\text\lastName.txt', 'r', encoding='utf8') as infile:
+        with open('ocr/text/lastName.txt', 'r', encoding="utf8") as infile:
             for i in infile.readlines():
                 ratio = SequenceMatcher(a = uni.unidecode(i.upper()), b = lastName).ratio()
                 if ratio > maxx:
@@ -48,7 +48,7 @@ def searchAddressOfDL(data, file):
     res = ''
     maxx = 0.8
     data = uni.unidecode(data.upper())
-    with open(file, 'r', encoding='utf8') as infile:
+    with open(file, 'r', encoding="utf8") as infile:
         for i in infile.readlines():
             if len(data.replace(' ', '')) <= len(i.strip().replace(' ', '')) + 4:
                 ratio = SequenceMatcher(a = uni.unidecode(i.upper()), b = data.upper()).ratio()
@@ -78,7 +78,7 @@ def extractIdOfDL(data):
 def extractNationOfDL(data):
     maxx = 0.7
     res = ''
-    with open('ocr/text/nation.txt', 'r', encoding='utf-8') as infile:
+    with open('ocr/text/nation.txt', 'r', encoding="utf8") as infile:
         for i in infile.readlines():
             ratio = SequenceMatcher(a=i.upper(),b=data.upper()).ratio()
             if ratio >= maxx:
@@ -143,6 +143,9 @@ def output_proc_idCard(results):
 
         if extractDate(results[i]):
             expires = extractDate(results[i])
+
+    if searchLastName(name):
+        name = searchLastName(name)
 
     if searchDataFromFile(hometown, 'ocr/text/address.txt'):
         hometown = searchDataFromFile(hometown, 'ocr/text/address.txt')
