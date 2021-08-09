@@ -2,20 +2,25 @@ html{
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
 }
 
+*{
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  min-width: 1200px;
+}
+
 .header{
   height: 30px;
   background-color: rgba(128, 128, 128, 0.486);
   padding: 15px;
+  margin: 10px;
   display: flex;
-}
-
-body{
-  min-width: 1150px;
 }
 
 .log_in{
   margin-left: auto;
-  
 }
 
 .header > select{
@@ -70,12 +75,12 @@ body{
 .large_title{
   display: flex;
   justify-content: center;
-  padding: 10px;
+  padding: 5px;
   height: 40px;
 }
 
 .large_title > div{
-  padding: 8px 5px 0 5px;
+  padding: 5px 5px 0 5px;
   font-size: 25px;
 }
 
@@ -84,7 +89,7 @@ body{
 }
 
 .small_title{
-  padding: 5px;
+  padding-bottom: 5px;
   text-align: center;
   font-size: 15px;
 }
@@ -172,7 +177,7 @@ body{
 }
 
 .menu{
-  background-color: rgba(135, 177, 241, 0.897);
+  background-color: #3d99f5c7;
   width: 178px;
   display: none;
   margin: 0;
